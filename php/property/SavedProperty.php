@@ -44,12 +44,9 @@ Class SavedProperty {
                 'message' => 'Se guardo correctamente'
             ));
         }catch(Exception $e){
-            $error = $e->getMessage();
-            $errorDuplicate = "SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '29' for key 'id_property'";
-            if($errorDuplicate == $error) $error = "No se puede agregar dos veces la misma propiedad";
             echo json_encode(array(
                 'success' => 0,
-                'message' => $error
+                'message' => $e->getMessage()
             ));
         }
     }

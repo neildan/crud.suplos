@@ -117,7 +117,17 @@ var Property = (function Property() {
         const route = "../php/property/Post.php";
         if (id) {
             $.post(route, { id: id }, function(response, status) {
-                if (status) alert(JSON.parse(response).message);
+                var errorDuplicate = "SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate";
+                if (status) {
+                    let result = JSON.parse(response);
+                    let message = '';
+                    if (result.success == 0 && result.message.includes(errorDuplicate)) {
+                        message = "No puede guardar la misma propiedad dos veces."
+                    } else {
+                        message = result.message;
+                    }
+                    alert(message);
+                }
             });
         }
     }
