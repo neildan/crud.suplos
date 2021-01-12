@@ -1,0 +1,22 @@
+<!--
+    Template for draw the properties
+    @author Daniel Valencia <danielfelipeluis@outlook.com>
+-->
+{{each properties}}
+<div class="card listCard" id="id_${$value.Id}">
+    <div class=" row ">
+        <div class="col "><img height="140px " width="200px " src="./img/home.jpg "></div>
+        <div class="col ">
+            <p><b>Direccion: </b>${$value.Direccion}</p>
+            <p><b>Ciudad: </b>${$value.Ciudad}</p>
+            <p><b>Telefono: </b>${$value.Telefono}</p>
+            <p><b>Codigo Postal: </b>${$value.Codigo_Postal}</p>
+            <p><b>Tipo: </b>${$value.Tipo}</p>
+            <p><b>Precio: </b>${$value.Precio}</p>
+        </div>
+    </div>
+    <div class="card-action ">
+        <a class="btn white-text " onclick="Property.save(parseInt('${$value.Id}'))">GUARDAR</a>
+    </div>
+</div>
+{{/each}}
